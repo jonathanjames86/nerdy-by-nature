@@ -2,12 +2,41 @@
 <html  ng-app="myApp">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Lobster|Anton|Pacifico' rel='stylesheet' type='text/css'>
     <title>Angular Practice</title>
   </head>
-  <body>
+  <body ng-controller="mainCtrl">
 
+    <section class="jumbotron-img">
+      <nav class="navbar"></nav>
+        <div class="jumbo-logo">
+          <h1>Nerdy By</h1>
+          <img id="glasses-svg" src="./nerd-glasses.svg" alt="" />
+          <h1>Nature</h1>
+         </div>
+    </section>
+    <section class="main-container">
+      <section class="product-container" ng-repeat="people in peoples">
+        <div class="shirts">
+          <div class="shirt-resize">
+            <img src="{{people.image}}" alt="batman">
+          </div>
+        </div>
+        <div class="prodct-info">
+          {{people.name}} <br>
+          {{ people.price | currency }}
+        </div>
+
+
+        </section>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
-    <script src="./app.js"></script>
+    <script  type="text/javascript" src="./js/app.js"></script>
+    <script  type="text/javascript" src="./js/mainController.js"></script>
+    <script  type="text/javascript" src="./js/mainService.js"></script>
+
   </body>
 </html>
