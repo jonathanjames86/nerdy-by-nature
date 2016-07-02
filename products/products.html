@@ -1,29 +1,67 @@
-<nav class="navbar">
-  <div ui-sref="home" id="productNav" class="navlogo">Nerdy <spam>By</spam> <br>Nature
-    </div>
-  <img class="menu-item"  id="menu-icon" src="./red-glasses-256.png" alt="menu-icon" />
-  <div id="productNav" class="menu-item">Contact Us</div>
-    <div id="productNav" class="menu-item">Login</div>
-</nav>
+<section class="products-head">
 
 
+    <nav class="navbar">
+      <div ui-sref="home" id="productNav" class="navlogo">Nerdy <spam>By</spam> <br>Nature
+        </div>
+      <img class="menu-item"  id="menu-icon" src="./red-glasses-256.png" alt="menu-icon" />
+      <div id="productNav" class="menu-item">Contact Us</div>
+        <div id="productNav" class="menu-item">Login</div>
+    </nav>
+
+</section>
 
 <section class="main-container-header">
-  <h1>-By the Power Of <spam>GreySkull</spam></h1>
+  <div class="about-header">
+      <div class="hyphen-container"></div>
+      By the Power of<font> GreySkull</font>
+  </div>
+
+  <!-- <div class="hyphen-container"></div><h1>-By the Power Of <spam>GreySkull</spam></h1> -->
   <!-- <section class="search-bar"><label>Search for Greatness: <input ng-model="name"></label></section> -->
 </section>
+<section class="side-bar">
+    <div class="search-filter">
+        FILTER BY
+    </div>
+    <div class="feature-products">
+      <h1>FEATURES</h1>
+      <p>New prodcuts</p>
+      <p>Shirts</p>
+      <p>Bags</p>
+      <p>Caps & hats</p>
+      <p>Gymwear</p>
+      <p>Sweatshirts</p>
+      <p>Accessories</p>
+    </div>
+    <div class="recent-products">
+      RECENT PRODUCTS
+    </div>
+</section>
+
 <section class="search-bar"><label>Search Products: <input ng-model="name"></label></section>
 <section class="main-container">
+
 
   <section class="product-container" ng-repeat="people in peoples | filter: name">
     <div class="shirts">
       <div class="shirt-resize">
         <img src="{{people.image}}" alt="tshirt image">
+
+      </div>
+      <div class="like-me">
+        <img src="./heart.png" alt="" />
+        <div class="product-info">
+          <!-- {{people.name}} <br>
+          {{ people.price | currency }} <br> -->
+          <button type="button" id="cart-button" name="button">Add to Cart</button>
+        </div>
       </div>
     </div>
     <div class="product-info">
       {{people.name}} <br>
-      {{ people.price | currency }} <br> <button type="button" id="cart-button" name="button">Add to Cart</button>
+      {{ people.price | currency }} <br>
+      <!-- <button type="button" id="cart-button" name="button">Add to Cart</button> -->
     </div>
 
     </section>
