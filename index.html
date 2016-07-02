@@ -2,54 +2,42 @@
 <html  ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/main.css">
+      <link rel="stylesheet" href="./styles/products.css">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Lobster|Anton|Pacifico" rel='stylesheet' type='text/css'>
     <title>Nerdy By Choice</title>
-  </head>
-  <body ng-controller="mainCtrl">
+    </head>
+    <body ng-controller="mainCtrl">
+    <ui-view></ui-view>
 
-    <section class="jumbotron-img">
-      <nav class="navbar">
-        <div class="navlogo">Nerdy By Nature</div>
-        <img id="menu-icon" src="./show-menu.png" alt="menu-icon" />
-        <div class="menu-item">Contact Us</div>
-          <div class="menu-item">On Sale</div>
-      </nav>
-        <div class="jumbo-logo">
-          <h1>Nerdy By</h1>
-          <img id="glasses-svg" src="./nerd-glasses.svg" alt="" />
-          <h1>Nature</h1>
-         </div>
-    </section>
-    <section class="main-container-header">
-<h1>By the Power Of GreySkull</h1>
-    </section>
-    <section class="search-bar"><label>Search for Greatness: <input ng-model="name"></label></section>
-    <section class="main-container">
-
-      <section class="product-container" ng-repeat="people in peoples | filter: name">
-        <div class="shirts">
-          <div class="shirt-resize">
-            <img src="{{people.image}}" alt="tshirt image">
-          </div>
+    <!-- <section class="newsletter">Life</section> -->
+      <section class="subscribe">
+        <div class="newsletter">
+          <div class="hyphen-white"></div>
+          Our <spam>NewsLetter</spam>
         </div>
-        <div class="product-info">
-          {{people.name}} <br>
-          {{ people.price | currency }} <br> <button type="button" id="cart-button" name="button">Add to Cart</button>
+        <div class="email-input">
+          <input type="text" name="name" value=""><button type="button" name="button">Subscribe</button>
         </div>
 
-
-        </section>
+      </section>
+    <section class="footer">
+      <div class="footer-logo">Nerdy<spam>By</spam><br>Nature</div>
+      <div class="footerinfo">Ⓒ NerdyByNature 2016<br> All Rights Reserved</div>
+      <div class="footerinfo">SITE MAP <br> TERM & CONDITIONS <br> PRIVACY POLICY <br> HELP <br> AFFILIATE</div>
+      <div class="footerinfo">OUR LOCATION <br> CAREER <br> ABOUT <br> CONTACT</div>
+      <div class="social-media"></div>
 
     </section>
-    <section class="footer"> Content</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script  type="text/javascript" src="./js/app.js"></script>
     <script  type="text/javascript" src="./js/mainController.js"></script>
     <script  type="text/javascript" src="./js/mainService.js"></script>
+    <script  type="text/javascript" src="./js/script.js"></script>
 
   </body>
 </html>
