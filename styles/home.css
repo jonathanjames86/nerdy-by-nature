@@ -17,7 +17,7 @@
   align-items: center;
   padding-left: 1%;
   font-size: 2.25rem;
-  font-family: 'Montserrat';
+  font-family: 'Poppins';
 }
 .about-header spam{
   font-family: "Lobster";
@@ -72,12 +72,14 @@
 .garuntee-info{
   height: 100%;
   width: 20%;
-  font-family: 'Montserrat';
+  font-family: 'Poppins';
   /*border: 2px solid black;*/
   color: white;
   line-height: 2;
   font-size: .65vw;
-
+}
+.garuntee-info p{
+  font-family: "Montserrat";
 }
 .garuntee-head{
   color: white;
@@ -97,15 +99,22 @@
 }
 .popular-products red{
   color: #9A0000;
+  font-family: "Montserrat"
 }
 
 .product-veiwer{
-  width: 100%;
+  width: 200%;
   height:75%;
   border: 2px solid black;
   overflow: scroll;
 }
 .product-carousel{
+  display:inline-flex;
+  overflow:hidden;
+  height: 100%;
+  width: 24%;
+  margin:auto;
+  border: 2px solid #2b2b2b;
 
 }
 

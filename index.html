@@ -1,43 +1,67 @@
 <!DOCTYPE html>
-<html  ng-app="myApp">
-  <head>
+<html ng-app="myApp">
+
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/products.css">
     <link rel="stylesheet" href="./styles/home.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Lobster|Anton|Pacifico" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Lobster|Anton|Pacifico|Poppins" rel='stylesheet' type='text/css'>
     <title>Nerdy By Choice</title>
-    </head>
-    <body ng-controller="mainCtrl">
+
+</head>
+
+<body ng-controller="mainCtrl">
     <ui-view></ui-view>
 
     <!-- <section class="newsletter">Life</section> -->
-      <section class="subscribe">
+    <section class="subscribe">
         <div class="newsletter">
-          <div class="hyphen-white"></div>
-          Our <spam>NewsLetter</spam>
+            <div class="hyphen-container"></div>
+            Our
+            <spam> NewsLetter</spam>
         </div>
         <div class="email-input">
-          <input type="text" placeholder="   youremail@domain.com" name="name" value=""><button type="button" name="button">Subscribe</button>
+            <input type="text" placeholder="   youremail@domain.com" name="name" value="">
+            <button type="button" name="button">Subscribe</button>
         </div>
 
-      </section>
+    </section>
     <section class="footer">
-      <div class="footer-logo">Nerdy<spam>By</spam><br>Nature</div>
-      <div class="footerinfo">Ⓒ NerdyByNature 2016<br> All Rights Reserved</div>
-      <div class="footerinfo">SITE MAP <br> TERM & CONDITIONS <br> PRIVACY POLICY <br> HELP <br> AFFILIATE</div>
-      <div class="footerinfo">OUR LOCATION <br> CAREER <br> ABOUT <br> CONTACT</div>
-      <div class="social-media"></div>
+        <div ui-sref="home" class="footer-logo">Nerdy
+            <spam>By</spam>
+            <br>Nature</div>
+        <div class="footerinfo">
+            <p>Ⓒ NerdyByNature 2016</p>
+            <br> <p> All Rights Reserved</p>
+          </div>
+        <div class="footerinfo">
+            <p>SITE MAP </p>
+            <br> <p> TERM & CONDITIONS </p>
+            <br><p> PRIVACY POLICY  </p>
+            <br><p> HELP  </p>
+            <br> <p> AFFILIATE  </p>
+        </div>
+        <div class="footerinfo">
+          <p>OUR LOCATION </p>
+          <br> <p> CAREER </p>
+          <br><p> ABOUT </p>
+          <br><p> CONTACT  </p>
+
+
+        </div>
+        <div class="social-media"></div>
 
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-    <script  type="text/javascript" src="./js/app.js"></script>
-    <script  type="text/javascript" src="./js/mainController.js"></script>
-    <script  type="text/javascript" src="./js/mainService.js"></script>
-    <script  type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+    <script type="text/javascript" src="./js/mainController.js"></script>
+    <script type="text/javascript" src="./js/mainService.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
 
-  </body>
+</body>
+
 </html>

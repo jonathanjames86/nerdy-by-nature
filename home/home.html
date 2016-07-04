@@ -8,14 +8,19 @@
         <a href="#">Link 2</a>
         <a href="#">Link 3</a> -->
         </div>
-        <img class="menu-item" id="menu-icon" src="./red-glasses-256.png" alt="menu-icon" />
+        <div onclick="menuDrop('cart-menu', 45)">
+          <img class="menu-item" id="menu-icon" src="./full_cart.svg" alt="menu-icon" />
+        </div>
         <div class="menu-item">Contact Us</div>
         <div class="menu-item">Login</div>
     </nav>
+    <div  id="cart-menu" class="cart-dropdown">
+      <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
+    </div>
     <div class="rotate">Spring / Summer 2016
 
     </div>
-    <div ui-sref="products" class="jumbo-logo">
+    <div ui-sref="products"  on-click="window.onload()" class="jumbo-logo">
         <h1>Shop</h1>
         <img id="glasses-svg" src="./nerd-glasses.svg" alt="" />
         <h1>Now</h1>
@@ -68,9 +73,9 @@
       Popular <red> Products</red>
   </div>
   <div class="product-veiwer">
-    <!-- Carousel -->
-    <div class="product-carousel"></div>
 
+    <div ng-repeat="things in store" class="product-carousel"></div>
+      <img src="{{ things.names | limitTo:5 }}" alt="tshirts" />
 
   </div>
 </section>
