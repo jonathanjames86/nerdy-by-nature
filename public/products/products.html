@@ -1,0 +1,91 @@
+<section class="products-head">
+
+
+    <nav class="navbar">
+        <div ui-sref="home" id="productNav" class="navlogo">Nerdy
+            <spam>By</spam>
+            <br>Nature
+        </div>
+        <div onclick="menuDrop('cart-menu', 45)">
+        <img  class="menu-item" id="menu-icon" src="./full_cart.svg" alt="menu-icon" />
+        </div>
+
+        <div id="productNav" class="menu-item">Contact Us</div>
+        <div id="productNav" class="menu-item">Login</div>
+    </nav>
+          <div  id="cart-menu" class="cart-dropdown">
+            <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
+          </div>
+
+    <h1 class="beYou"> Be . <span id="besuper"></span></h1>
+</section>
+
+<section class="main-container-header">
+    <div class="about-header">
+        <div class="hyphen-container"></div>
+        By the Power of<font> GreySkull</font>
+    </div>
+
+</section>
+<section class="side-bar">
+    <div onclick="menuDrop('myDropdown', 30)" class="search-filter">
+        FILTER BY <span id="navarrow">&#9662</span>
+
+
+    </div>
+    <div id="myDropdown" class="filter-dropdown">
+      <div class="gender-selector">GENDER: MEN - WOMEN</div>
+      <div class="color-selector">COLORS:</div>
+      <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
+      <div class="price-selector">PRICE:</div>
+    </div>
+    <div class="feature-products">
+        <h1>FEATURES</h1>
+        <p>New prodcuts</p>
+        <p>Shirts</p>
+        <p>Bags</p>
+        <p>Caps & hats</p>
+        <p>Gymwear</p>
+        <p>Sweatshirts</p>
+        <p>Accessories</p>
+    </div>
+    <div class="recent-products">
+        RECENT PRODUCTS
+    </div>
+</section>
+
+<section class="search-bar">
+    <label>Search Products: {{people.length}}
+        <input ng-model="name">
+    </label>
+    Products Found:
+</section>
+<section class="main-container">
+
+
+    <section class="product-container" ng-repeat="product in store | filter: name">
+        <div class="shirts">
+            <div class="shirt-resize">
+                <img src="{{product.image}}" alt="tshirt image">
+
+            </div>
+            <div class="like-me">
+                <img src="./heart.png" alt="" />
+                <div on-click="likeCounter()" id="likes">
+                    {{product.likes + 2}}
+                </div>
+
+                <button type="button" id="cart-button" name="button">Add to Cart</button>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="product-info">
+            {{product.name}}
+            <br> {{ product.price | currency }}
+            <br>
+            <!-- <button type="button" id="cart-button" name="button">Add to Cart</button> -->
+        </div>
+
+    </section>
+
+</section>
