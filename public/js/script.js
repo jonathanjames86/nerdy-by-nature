@@ -13,7 +13,43 @@ function menuDrop(x, h) {
     }
 };
 
+function sideDrop(x, w){
+  var menu = document.getElementById(x),
+  maxW = w+"%";
+  if(menu.style.width === maxW){
+    menu.style.width = "0px";
+  } else{
+    menu.style.width = maxW;
+  }
+};
 
+function genderColor(el){
+  var colorChange = document.getElementById('gender-div').children;
+  for(var i = 0; i < colorChange.length; i++){
+    colorChange[i].className = "color1";
+  };
+  el.className = "color2";
+
+}
+
+function toggleColor(el){
+  var colorChange = document.getElementById('feature-products').children;
+  for(var i = 0; i < colorChange.length; i++){
+    colorChange[i].className = "color1";
+  }
+  colorChange[0].className = "feature-title";
+  el.className = "color2";
+
+};
+// function colorChange(x){
+//   var changeColor = document.getElementById(x);
+//   color = "#9A0000";
+//   if (changeColor.style.color === color){
+//     changeColor.style.color = #BABABA;
+//   } else {
+//     changeColor.style.color = color;
+//   }
+// };
 
 
 var beSuper_i = 0;
@@ -43,11 +79,17 @@ function wssSlide() {
 }
 
 
+// window.onclick = function(event){
+//   if(!event.target.matches('feature-products')){
+//     var feature = document.getElementsById('shirt-color');
+//     feature.style.color = "blue";
+//   }
+// }
 
 
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
-//   if (!event.target.matches('.search-filter')) {
+//   if (!event.target.matches('.feature-products')) {
 //
 //     var dropdowns = document.getElementsByClassName("filter-dropdown");
 //     var i;

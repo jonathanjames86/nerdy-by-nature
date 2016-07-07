@@ -13,8 +13,9 @@
         <div id="productNav" class="menu-item">Contact Us</div>
         <div id="productNav" class="menu-item">Login</div>
     </nav>
+
           <div  id="cart-menu" class="cart-dropdown">
-            <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
+              <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
           </div>
 
     <h1 class="beYou"> Be . <span id="besuper"></span></h1>
@@ -28,26 +29,28 @@
 
 </section>
 <section class="side-bar">
-    <div onclick="menuDrop('myDropdown', 30)" class="search-filter">
+    <div onclick="menuDrop('myDropdown', 30); sideDrop('2ndDropdown', 100)" class="search-filter">
         FILTER BY <span id="navarrow">&#9662</span>
 
 
     </div>
     <div id="myDropdown" class="filter-dropdown">
-      <div class="gender-selector">GENDER: MEN - WOMEN</div>
-      <div class="color-selector">COLORS:</div>
-      <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
-      <div class="price-selector">PRICE:</div>
+      <div id="2ndDropdown" class="dropdown-content">
+        <div id="gender-div" class="gender-selector">GENDER: <span class="color1" onclick="genderColor(this)" ng-click="genderFilter = {gender: 'men'}">MEN</span> - <span onclick="genderColor(this)" class="color1" ng-click="genderFilter = {gender: 'female'}">WOMEN</span></div>
+        <div class="color-selector">COLORS:</div>
+        <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
+        <div class="price-selector">PRICE:</div>
+      </div>
     </div>
-    <div class="feature-products">
-        <h1>FEATURES</h1>
-        <p>New prodcuts</p>
-        <p>Shirts</p>
-        <p>Bags</p>
-        <p>Caps & hats</p>
-        <p>Gymwear</p>
-        <p>Sweatshirts</p>
-        <p>Accessories</p>
+    <div id="feature-products">
+        <h1 class="feature-title">FEATURES</h1>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = name">All prodcuts</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'shirt'}">Shirts</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'bag'}">Bags</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'hat'}">Caps & hats</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'gym'}">Gymwear</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'sweater'}">Sweatshirts</div>
+        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'other'}">Accessories</div>
     </div>
     <div class="recent-products">
         RECENT PRODUCTS
@@ -55,21 +58,30 @@
 </section>
 
 <section class="search-bar">
-    <label>Search Products: {{people.length}}
+    <div class="product-search">Search Products:
         <input ng-model="name">
-    </label>
-    Products Found:
+    </div>
+    <div>
+      SORT BY:
+      <select ng-model="searchProperty" class="sort-by">
+        <option value="name">Name</option>
+        <option value="price">Price $ to $$$</option>
+        <option value="-price">Price $$$ to $</option>
+        <option value="-likes">Popular</option>
+      </select>
+    </div>
+    <div class="products-found">Products Found: <span> {{store.length}} </span> </div>
 </section>
 <section class="main-container">
 
 
-    <section class="product-container" ng-repeat="product in store | filter: name">
-        <div class="shirts">
+    <section class="product-container" ng-repeat="product in store | filter:name | filter:genderFilter | filter:myFilter | orderBy: searchProperty">
+        <div  class="shirts">
             <div class="shirt-resize">
                 <img src="{{product.image}}" alt="tshirt image">
 
             </div>
-            <div class="like-me">
+            <div id="like-animation" class="like-me">
                 <img src="./heart.png" alt="" />
                 <div on-click="likeCounter()" id="likes">
                     {{product.likes + 2}}
@@ -81,7 +93,7 @@
         </div>
         <div class="product-info">
             {{product.name}}
-            <br> {{ product.price | currency }}
+            <br> ${{ product.price }}
             <br>
             <!-- <button type="button" id="cart-button" name="button">Add to Cart</button> -->
         </div>

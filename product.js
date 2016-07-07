@@ -19,7 +19,8 @@ var productSchema = new Schema({
   image: {
     type: String,
     required: true
-  }
+  },
+  category: String,
 
 });
 
