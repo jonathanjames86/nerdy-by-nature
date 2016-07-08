@@ -64,6 +64,152 @@ body {
     padding-right: 2%;
     /*border: 2px solid black;*/
 }
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 200;
+  background-color:  hsla(360, 100%, 0%, 0.8);
+  transition: width 0.4s ease 0s;
+}
+.modal-container {
+  /*display: none;*/
+  position: fixed;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15vh;
+  border-radius: 15px;
+  /*max-width: 400px;*/
+  height: 70vh;
+  background-color: white;
+}
+.modal-image{
+  width: 35%;
+  border-radius: 15px 0 0 15px;
+  height: 100%;
+  float: left;
+  background-image: url('http://cssboxmodel.com/img/amelia-bg.jpg');
+  background-size: cover;
+  background-position: 65% 75%;
+}
+.modal-login{
+  width: 65%;
+  float:left;
+  height: 100%;
+  /*background-color: lightgray;*/
+  border-radius: 0 15px 15px 0;
+}
+.close-modal{
+  padding-top: 1%;
+  font-family: "Poppins";
+  width: 12%;
+  font-size: 1vw;
+  float: right;
+  padding-right: 1%;
+  /*margin-left: 80%;*/
+  height: 5%;
+  cursor: pointer;
+  /*background: red;*/
+}
+.login-content{
+  width: 80%;
+  height: 80%;
+  padding-top: 10%;
+  margin: auto;
+  /*background-color: #2b2b2b;*/
+}
+.login-welcome{
+  width: 100%;
+  height: 25%;
+  font-family: "Poppins";
+  font-size: .80rem;
+  /*border:2px solid #2b2b2b;*/
+  color: #BABABA;
+  line-height: 1.5;
+
+}
+.login-welcome h1{
+  font-size: 1.2rem;
+  color: black;
+  font-weight: bold;
+}
+.login-form{
+font-family: "Poppins";
+}
+.login-fields{
+  border-style: none;
+  border-bottom: 1px solid #BABABA;
+  width: 90%;
+  height:30px;
+  font-family: "Montserrat";
+  margin-bottom: 2%;
+}
+#keep-me-logged-in{
+  width: 5%;
+  margin-top: 1%;
+  height: 15px;
+  margin-bottom: 10%;
+  /*border: 2px solid #2b2b2b;*/
+}
+.keep-logged-in-text{
+  font-size: .75rem;
+  height: 30px;
+  width: 25%;
+  font-family: "Montserrat";
+  /*border: 2px solid #2b2b2b;*/
+  /*padding-bottom: 1%;*/
+}
+.password-reset{
+  font-size: .7rem;
+  height: 30px;
+  text-align: right;
+  float: right;
+  margin-right: 48px;
+  right: 0;
+  width: 35%;
+  padding-top: 2%;
+  color: #8DDEE1;
+  font-family: "Montserrat";
+  /*border: 2px solid #2b2b2b;*/
+
+}
+.user-login{
+  width: 200px;
+  height: 55px;
+  border-radius: 35px;
+  background-color: #9A0000;
+  font-size: .75rem;
+  color: white;
+  border-style: none;
+  word-spacing: 10px;
+  letter-spacing: 1.5px;
+}
+.or-login-with{
+  width: 100%;
+  height: 30%;
+  /*border: 2px solid #2b2b2b;*/
+  display:flex;
+  /*justify-content: space-around;*/
+  align-items: center;
+  font-family: "Poppins";
+  font-weight: bolder;
+  font-size: .85rem;
+
+}
+.facebook{
+  margin-left: 30px;
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  background: darkblue;
+}
+
+
+
+/*------------------------------HEADER CONTENT-------------------------------*/
 .jumbotron-img {
     width: 100%;
     height: 77vh;

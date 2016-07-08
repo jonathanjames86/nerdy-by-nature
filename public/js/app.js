@@ -8,6 +8,7 @@ angular.module('myApp', ['ui.router'])
       })
       .state('products', {
         url: '/products',
-        templateUrl: './products/products.html'
+        templateUrl: './products/products.html',
+        // controller: 'ProductsController'
       })
 });

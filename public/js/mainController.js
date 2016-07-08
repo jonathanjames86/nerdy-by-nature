@@ -10,5 +10,11 @@ angular.module('myApp')
     // $scope.sortBy = function(searchProperty) {
     //   $scope.searchProperty = 'searchProperty';
     // };
+    $scope.grabId = function(productId){
+      mainService.addToCart(productId).then(function(response){
+        $scope.cart = response.data;
+      });
+      console.log(productId);
+    }
 
 });

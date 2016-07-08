@@ -1,5 +1,9 @@
+#productLogin{
+  color:black;
+}
 #productNav{
   color:black;
+
 }
 
 .products-head {
@@ -175,22 +179,132 @@ float: left;
   transition: width 0.3s ease 0.4s;
 }
 .gender-selector{
-  height: 10%;
+  height: 15%;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   /*background: lightblue;*/
   /*border: 8px solid blue;*/
 }
+
+
+/*----------------COLOR SELECTOR--------------*/
 .color-selector{
   height: 30%;
   width: 100%;
   /*background:blue;*/
+  /*border: 2px solid #2b2b2b;*/
+  display: flex;
+  justify-content: space-between;
+
 }
-.price-selector{
+.filter-title{
+  padding-top: 2%;
+  width: 30%;
+  height: 100%;
+  /*border: 2px solid blue;*/
+}
+#feature-content{
+  height: 100%;
+  width: 60%;
+  /*border: 2px solid red;*/
+}
+.cc-opacity-half{
+  opacity: .2;
+}
+.cc-opacity-full{
+  opacity: 1;
+  /*background-image: url('');*/
+
+}
+
+.cc-opacity-half:hover{
+  opacity: 1;
+}
+#cc-blue{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #3E58A8;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-black{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: black;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-red{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #9A0000;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-orange{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #DC5818;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-green{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #017139;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-gray{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #A9A9A9;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+#cc-yellow{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #E3D809;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+.genre-selector{
   height: 30%;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   /*background:blue;*/
+}
+#genre-content{
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.genre-container{
+  height: 50%;
+  width: 50%;
+  /*border-radius: 50%;*/
+}
+#genre-comics{
+
 }
 .size-selector{
   height: 20%;
@@ -215,6 +329,7 @@ float: left;
 }
 .color1{
   color: #BABABA;
+  cursor: pointer;
 }
 .color1:hover{
   color: #2b2b2b;
@@ -222,6 +337,7 @@ float: left;
 .color2{
 color: #9A0000;
 /*font-size: 1.1rem;*/
+cursor: pointer;
 }
 .color2:hover{
   color: black;

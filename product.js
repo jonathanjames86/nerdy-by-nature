@@ -6,10 +6,10 @@ var productSchema = new Schema({
     type: String,
     required: true,
     Unique: true,
-    Index: true
+    index: true
   },
   price: {
-    type: String,
+    type: Number,
     required: true
   },
   likes: {
@@ -20,7 +20,23 @@ var productSchema = new Schema({
     type: String,
     required: true
   },
-  category: String,
+  type: {
+    type: String,
+    required: true
+  },
+  gender: {
+    type: String,
+    required: true
+  },
+  color: {
+    type: String,
+    required : true
+  },
+  genre: {
+    type: String,
+    required : true
+  }
+
 
 });
 

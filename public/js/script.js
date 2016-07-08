@@ -28,6 +28,7 @@ function genderColor(el){
   for(var i = 0; i < colorChange.length; i++){
     colorChange[i].className = "color1";
   };
+  colorChange[0].className = "gender-selector";
   el.className = "color2";
 
 }
@@ -39,6 +40,14 @@ function toggleColor(el){
   }
   colorChange[0].className = "feature-title";
   el.className = "color2";
+};
+
+function toggleOpacity(el){
+  var opacityChange = document.getElementById('feature-content').children;
+  for(var i = 0; i < opacityChange.length; i++){
+    opacityChange[i].className = "cc-opacity-half";
+  }
+  el.className = "cc-opacity-full";
 
 };
 // function colorChange(x){

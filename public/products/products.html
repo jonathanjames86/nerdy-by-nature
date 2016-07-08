@@ -11,7 +11,33 @@
         </div>
 
         <div id="productNav" class="menu-item">Contact Us</div>
-        <div id="productNav" class="menu-item">Login</div>
+        <div id="productLogin" onclick="sideDrop('modal-drop', 100)" class="menu-item">Login</div>
+        <div id="modal-drop"  class="modal">
+          <div class="modal-container">
+            <div class="modal-image"></div>
+            <div class="modal-login">
+              <div onclick="sideDrop('modal-drop', 100)" class="close-modal">CLOSE X</div>
+              <div class="login-content">
+                <div class="login-welcome">
+                  <h1>Login to your account</h1>
+                    <p>Login to your account to discover all that nerd swagger.</p>
+                    <p>Because you're all about that life</p>
+                </div>
+                <form novalidate class="login-form">
+                  <input class="login-fields" placeholder="Name" type="search" ng-model="user.name" /><br />
+                  <input class="login-fields" placeholder="Password" type="password" ng-model="user.password" /><br />
+                  <input class="login-fields" placeholder="Email" type="email" ng-model="user.email" /><br />
+                  <!-- <input type="button" ng-click="reset()" value="Reset" /> -->
+                  <input id="keep-me-logged-in" type="checkbox" name="vehicle" value="Car" checked="checked"><span class="keep-logged-in-text"> Keep me logged in </span>  <div class="password-reset">Forgot your password?</div><br>
+                  <input class="user-login" type="submit" ng-click="update(user)" value="LOGIN &#8594;" />
+                </form>
+                <div class="or-login-with"> OR LOGIN WITH
+                  <div class="facebook"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </nav>
 
           <div  id="cart-menu" class="cart-dropdown">
@@ -36,15 +62,35 @@
     </div>
     <div id="myDropdown" class="filter-dropdown">
       <div id="2ndDropdown" class="dropdown-content">
-        <div id="gender-div" class="gender-selector">GENDER: <span class="color1" onclick="genderColor(this)" ng-click="genderFilter = {gender: 'men'}">MEN</span> - <span onclick="genderColor(this)" class="color1" ng-click="genderFilter = {gender: 'female'}">WOMEN</span></div>
-        <div class="color-selector">COLORS:</div>
+        <div id="gender-div" onclick="genderColor" class="gender-selector"><span ng-click="genderFilter = {gender: 'm'}">GENDER:</span> <span class="color1" onclick="genderColor(this)" ng-click="genderFilter = {gender: 'men'}">MEN</span> - <span onclick="genderColor(this)" class="color1" ng-click="genderFilter = {gender: 'female'}">WOMEN</span></div>
+        <div class="color-selector">
+          <div ng-click="colorFilter = {color: 'all'}" class="filter-title">COLORS:</div>
+          <div id="feature-content">
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'blue'}" onclick="toggleOpacity(this)" id="cc-blue"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'black'}" onclick="toggleOpacity(this)" id="cc-black"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'red'}" onclick="toggleOpacity(this)" id="cc-red"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'orange'}" onclick="toggleOpacity(this)" id="cc-orange"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'green'}" onclick="toggleOpacity(this)" id="cc-green"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'yellow'}" onclick="toggleOpacity(this)" id="cc-yellow"></div>
+            <div class="cc-opacity-half" ng-click="colorFilter = {color: 'gray'}" onclick="toggleOpacity(this)" id="cc-gray"></div>
+
+          </div>
+        </div>
         <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
-        <div class="price-selector">PRICE:</div>
+        <div class="genre-selector">
+          <div class="filter-title">GENRE:</div>
+          <div id="genre-content">
+            <div id="genre-comics" class="genre-container"></div>
+            <div class="genre-container"></div>
+            <div class="genre-container"></div>
+            <div class="genre-container"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="feature-products">
         <h1 class="feature-title">FEATURES</h1>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = name">All prodcuts</div>
+        <div class="color2" onclick="toggleColor(this)" ng-click="myFilter = name">All prodcuts</div>
         <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'shirt'}">Shirts</div>
         <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'bag'}">Bags</div>
         <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'hat'}">Caps & hats</div>
@@ -75,10 +121,10 @@
 <section class="main-container">
 
 
-    <section class="product-container" ng-repeat="product in store | filter:name | filter:genderFilter | filter:myFilter | orderBy: searchProperty">
+    <section class="product-container" ng-repeat="product in store | filter:name | filter:genderFilter | filter:colorFilter | filter:myFilter | orderBy: searchProperty track by product._id">
         <div  class="shirts">
             <div class="shirt-resize">
-                <img src="{{product.image}}" alt="tshirt image">
+                <img ng-src="{{product.image}}" alt="tshirt image">
 
             </div>
             <div id="like-animation" class="like-me">
@@ -87,7 +133,7 @@
                     {{product.likes + 2}}
                 </div>
 
-                <button type="button" id="cart-button" name="button">Add to Cart</button>
+                <button type="button" ng-click="grabId(product._id)" id="cart-button" name="button">Add to Cart</button>
                 <!-- </div> -->
             </div>
         </div>
