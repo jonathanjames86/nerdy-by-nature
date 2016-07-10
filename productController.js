@@ -3,7 +3,7 @@ var Product = require('./product.js');
 
 module.exports = {
   /// products: {
-        index: function(req, res, next) {
+        read: function(req, res, next) {
             Product.find({}, function(err, response) {
                 if (err) {
                     res.status(500).json(err);

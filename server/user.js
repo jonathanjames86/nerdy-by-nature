@@ -1,15 +1,32 @@
 var mongoose = require('mongoose');
-var passportLocal = require('passport-local');
+var bcrypt = require('bcryptjs');
+// var passportLocal = require('passport-local');
 var Schema = mongoose.Schema;
-var cartSchema = require('./cart.js');
+// var cartSchema = require('./cart.js');
 
-var userSchema = new Schema({
-  username: {type: String, required: true},
+var User = new Schema({
+  name: {type: String, required: true},
   password: {type: String, required: true},
+  email: {type: String, required: true, Unique: true},
   cart: [{type: String, ref: 'Product'}]
 });
 
-module.exports = mongoose.model('User', userSchema);
+//-------------------BYCRYPT
+User.pre('save', function(next) {
+	var user = this;
+	if (!user.isModified('password'))	return next();
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(user.password, salt);
+  user.password = hash;
+  return next(null, user);
+});
+
+User.methods.verifyPassword = function(reqBodyPassword) {
+  var user = this;
+  return bcrypt.compareSync(reqBodyPassword, user.password);
+};
+
+module.exports = mongoose.model('User', User);
 
 //
 //

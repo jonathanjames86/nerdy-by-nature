@@ -7,12 +7,119 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/products.css">
     <link rel="stylesheet" href="./styles/home.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Lobster|Anton|Pacifico|Poppins" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Lobster|Poppins" rel='stylesheet' type='text/css'>
     <title>Nerdy By Choice</title>
 
 </head>
 
 <body ng-controller="mainCtrl">
+  <div id="modal-drop-contact" class="modal-contact-us">
+      <div  class="modal-container-two">
+          <div class="modal-image-login"></div>
+          <div class="modal-login">
+              <div onclick="menuDrop('modal-drop-contact', 100)" class="close-modal">CLOSE X</div>
+
+              <div  class="login-content-container">
+                  <div id="login-click" class="login-content">
+                      <div class="login-welcome">
+                          <h1>Home Sweet Home!</h1>
+                          <p>Please enjoy this totally legit photo we took from our front porch.</p>
+                          <p>Real talk tho. Good to see ya.</p>
+                      </div>
+                      <form novalidate class="login-form">
+                          <input class="login-fields" placeholder="Email" type="email" ng-model="user.email" />
+                          <br />
+                          <input class="login-fields" placeholder="Password" type="password" ng-model="user.password" />
+                          <br />
+                          <div id="go-to-login" onclick="sideDrop('modal-drop', 100);moveRight('modal-drop-two')" class="login-here">Wait I don't have an account yet?! <span> Register Here </span></div>
+                          <br>
+
+                      </form>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <div id="modal-drop-two" class="modal-two">
+      <div  class="modal-container-two">
+          <div class="modal-image-two"></div>
+          <div class="modal-login">
+              <div onclick="moveRight('modal-drop-two')" class="close-modal">CLOSE X</div>
+
+              <div  class="login-content-container">
+                  <div id="login-click" class="login-content">
+                      <div class="login-welcome">
+                          <h1>Welcome Back!</h1>
+                          <p>We've missed you. Sorry that sounded a bit creepy.</p>
+                          <p>Real talk tho. Good to see ya.</p>
+                      </div>
+                      <form novalidate class="login-form">
+                          <input class="login-fields" placeholder="Email" type="email" ng-model="user.email" />
+                          <br />
+                          <input class="login-fields" placeholder="Password" type="password" ng-model="user.password" />
+                          <br />
+                          <div id="go-to-login" onclick="sideDrop('modal-drop', 100);moveRight('modal-drop-two')" class="login-here">Wait I don't have an account yet?! <span> Register Here </span></div>
+                          <br>
+                          <input class="user-register" type="submit" onclick="moveRight('modal-drop-two')" ng-click="userLogin(user)" value="LOGIN &#8594;" />
+                      </form>
+                      <div class="or-login-with"> OR LOGIN WITH
+                          <div class="facebook"></div>
+                          <div class="twitter"></div>
+                          <div class="google"></div>
+                          <div class="linkdin"></div>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <div id="modal-drop" class="modal">
+      <div class="modal-container">
+          <div class="modal-image"></div>
+          <div class="modal-login">
+              <div onclick="sideDrop('modal-drop', 100)" class="close-modal">CLOSE X</div>
+              <!-- <div id="thank-you" class=".login-content">
+            edsdf
+        <div> -->
+              <div  class="login-content-container">
+                  <div id="login-click" class="login-content">
+                      <div class="login-welcome">
+                          <h1>Register your account</h1>
+                          <p>Create your account to discover all that nerd swagger.</p>
+                          <p>Because you're all about that life</p>
+                      </div>
+                      <form novalidate class="login-form">
+                          <input class="login-fields" placeholder="Name" type="search" ng-model="user.name" />
+                          <br />
+                          <input class="login-fields" placeholder="Password" type="password" ng-model="user.password" />
+                          <br />
+                          <input class="login-fields" placeholder="Email" type="email" ng-model="user.email" />
+                          <br />
+                          <!-- <input type="button" ng-click="reset()" value="Reset" /> -->
+                          <div id="go-to-login" onclick="sideDrop('modal-drop', 100);moveRight('modal-drop-two')" class="login-here">Already have an account? <span> Login Here </span></div>
+
+                          <!-- <input id="keep-me-logged-in" type="checkbox" name="vehicle" value="Car" checked="checked"><span class="keep-logged-in-text"> Keep me logged in </span> -->
+                          <!-- <div class="password-reset">Already have an account? Login Here</div> -->
+                          <br>
+                          <input class="user-register" type="submit" onclick="sideDrop('modal-drop', 100)" ng-click="registerUser(user)" value="REGISTER &#8594;" />
+                      </form>
+                      <div class="or-login-with"> OR LOGIN WITH
+                          <div class="facebook"></div>
+                          <div class="twitter"></div>
+                          <div class="google"></div>
+                          <div class="linkdin"></div>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
     <ui-view></ui-view>
 
     <!-- <section class="newsletter">Life</section> -->
@@ -23,7 +130,7 @@
             <spam> NewsLetter</spam>
         </div>
         <div class="email-input">
-            <input type="text" placeholder="   youremail@domain.com" name="name" value="">
+            <input type="email" placeholder="   youremail@domain.com" name="name" value="">
             <button type="button" name="button">Subscribe</button>
         </div>
 
@@ -34,33 +141,41 @@
             <br>Nature</div>
         <div class="footerinfo">
             <p>Ⓒ NerdyByNature 2016</p>
-            <br> <p> All Rights Reserved</p>
-          </div>
-        <div class="footerinfo">
-            <p>SITE MAP </p>
-            <br> <p> TERM & CONDITIONS </p>
-            <br><p> PRIVACY POLICY  </p>
-            <br><p> HELP  </p>
-            <br> <p> AFFILIATE  </p>
+            <br>
+            <p> All Rights Reserved</p>
         </div>
         <div class="footerinfo">
-          <p>OUR LOCATION </p>
-          <br> <p> CAREER </p>
-          <br><p> ABOUT </p>
-          <br><p> CONTACT  </p>
+            <p>SITE MAP </p>
+            <br>
+            <p> TERM & CONDITIONS </p>
+            <br>
+            <p> PRIVACY POLICY </p>
+            <br>
+            <p> HELP </p>
+            <br>
+            <p> AFFILIATE </p>
+        </div>
+        <div class="footerinfo">
+            <p>OUR LOCATION </p>
+            <br>
+            <p> CAREER </p>
+            <br>
+            <p> ABOUT </p>
+            <br>
+            <p> CONTACT </p>
 
 
         </div>
         <div class="social-media"></div>
 
     </section>
-
+    <script type="text/javascript" src="./js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
     <script type="text/javascript" src="./js/mainController.js"></script>
     <script type="text/javascript" src="./js/mainService.js"></script>
-    <script type="text/javascript" src="./js/script.js"></script>
+
 
 </body>
 

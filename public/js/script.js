@@ -1,4 +1,43 @@
 
+var beSuper_i = 0;
+var beSuper_Array = ["|", "N", "Ne", "Ner|", "Nerd", "Nerdy", "Nerdy |", "Nerdy", "Nerd", "Ner|", "Ne",
+    "N", "", "S|", "Sup", "Supe", "Super |", "Super", "Supe", "Sup|", "S", " ", "Y|", "Yo", "You", "You |",
+    "You", "You", "You |", "You", "You", "You|", "Yo", "Y", "|", "", ""];
+// var beSuperElem = document.getElementById("besuper");
+var beSuperElem;
+window.onload = function() {
+    beSuperElem = document.getElementById("besuper");
+    wssSlide();
+};
+
+function beSuperNext() {
+    beSuper_i++;
+    beSuperElem.style.opacity = .9;
+    if (beSuper_i > (beSuper_Array.length - 1)) {
+        beSuper_i = 0;
+    }
+    setTimeout('wssSlide()', 165);
+}
+
+function wssSlide() {
+    beSuperElem.innerHTML = beSuper_Array[beSuper_i];
+    beSuperElem.style.opacity = 1;
+    setTimeout('beSuperNext()', 165);
+}
+
+function moveLeft(){
+
+}
+
+function moveRight(x) {
+  var modal = document.getElementById(x);
+  var maxL = 0+"%";
+  if(modal.style.left === maxL){
+    modal.style.left = -100+"%";
+  } else{
+    modal.style.left = maxL;
+  }
+};
 
 function menuDrop(x, h) {
     var menu = document.getElementById(x),
@@ -57,35 +96,9 @@ function toggleOpacity(el){
 //     changeColor.style.color = #BABABA;
 //   } else {
 //     changeColor.style.color = color;
-//   }
-// };
+//   }S
 
 
-var beSuper_i = 0;
-var beSuper_Array = [" |", "N", "Ne", "Ner|", "Nerd", "Nerdy", "Nerdy |", "Nerdy", "Nerd", "Ner|", "Ne",
-    "N", "", "S|", "Sup", "Supe", "Super |", "Super", "Supe", "Sup|", "S", " ", "Y|", "Yo", "You", "You |",
-    "You", "You", "You |", "You", "You", "You|", "Yo", "Y", "|", "", ""];
-// var beSuperElem = document.getElementById("besuper");
-var beSuperElem;
-window.onload = function() {
-    beSuperElem = document.getElementById("besuper");
-    wssSlide();
-};
-
-function beSuperNext() {
-    beSuper_i++;
-    beSuperElem.style.opacity = .9;
-    if (beSuper_i > (beSuper_Array.length - 1)) {
-        beSuper_i = 0;
-    }
-    setTimeout('wssSlide()', 165);
-}
-
-function wssSlide() {
-    beSuperElem.innerHTML = beSuper_Array[beSuper_i];
-    beSuperElem.style.opacity = 1;
-    setTimeout('beSuperNext()', 165);
-}
 
 
 // window.onclick = function(event){
