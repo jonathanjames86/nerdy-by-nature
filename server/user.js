@@ -7,8 +7,7 @@ var Schema = mongoose.Schema;
 var User = new Schema({
   name: {type: String, required: true},
   password: {type: String, required: true},
-  email: {type: String, required: true, Unique: true},
-  cart: [{type: String, ref: 'Product'}]
+  email: {type: String, required: true, Unique: true}
 });
 
 //-------------------BYCRYPT
@@ -27,16 +26,3 @@ User.methods.verifyPassword = function(reqBodyPassword) {
 };
 
 module.exports = mongoose.model('User', User);
-
-//
-//
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     User.findOne({ username: username }, function (err, user) {
-//       if (err) { return done(err); }
-//       if (!user) { return done(null, false); }
-//       if (!user.verifyPassword(password)) { return done(null, false); }
-//       return done(null, user);
-//     });
-//   }
-// ));

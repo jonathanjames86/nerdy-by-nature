@@ -18,8 +18,9 @@
     </nav>
 
     <div  id="cart-menu" class="cart-dropdown">
-
         <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
+        <div class="cart-contents">Actual Cart</div>
+        <div ng-show="loggedUser" ng-click="userLogout()" class="log-out">LOG OUT</div>
         <div class="cart-preview"></div>
 
     </div>
@@ -84,4 +85,16 @@
       <img ui-sref="products" src="{{ product.image }}" alt="tshirts" />
     </div>
   </div>
+</section>
+<section class="subscribe">
+    <div class="newsletter">
+        <div class="hyphen-container"></div>
+        Our
+        <spam> NewsLetter</spam>
+    </div>
+    <div class="email-input">
+        <input type="email" placeholder="   youremail@domain.com" name="name" value="">
+        <button type="button" name="button">Subscribe</button>
+    </div>
+
 </section>

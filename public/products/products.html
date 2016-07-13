@@ -1,133 +1,143 @@
-<section class="products-head">
+<section >
+    <section class="products-head">
 
 
-    <nav class="navbar">
+        <nav class="navbar">
 
-        <div ui-sref="home" id="productNav" class="navlogo">Nerdy
-            <spam>By</spam>
-            <br>Nature
-        </div>
-        <div onclick="menuDrop('cart-menu', 45)">
-            <img class="menu-item" id="menu-icon" src=".././images/full_cart.svg" alt="menu-icon" />
-        </div>
+            <div ui-sref="home" id="productNav" class="navlogo">Nerdy
+                <spam>By</spam>
+                <br>Nature
+            </div>
+            <div ng-click="populateCart()" onclick="menuDrop('cart-menu', 55)">
+                <img class="menu-item" id="menu-icon" src=".././images/full_cart.svg" alt="menu-icon">
+            </div>
 
-        <div id="productNav" onclick="menuDrop('modal-drop-contact', 100)"   class="menu-item">Contact Us</div>
-        <!-- <div id="productLogin" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div> -->
-        <div id="productLogin" ng-show="!loggedUser" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div>
-        <div id="productLogin" ng-show="loggedUser" onclick="menuDrop('cart-menu', 45)" class="menu-item">Hey! {{loggedUser.name}} &#9662</div>
-
-
+            <div id="productNav" onclick="menuDrop('modal-drop-contact', 100)"   class="menu-item">Contact Us</div>
+            <!-- <div id="productLogin" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div> -->
+            <div id="productLogin" ng-show="!loggedUser" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div>
+            <div id="productLogin" ng-show="loggedUser" onclick="menuDrop('cart-menu', 55)" class="menu-item">Hey! {{loggedUser.name}}</div>
 
 
 
-    </nav>
-
-    <div id="cart-menu" class="cart-dropdown">
-        <div onclick="menuDrop('cart-menu', 45)" class="closecart">CLOSE X</div>
-        <div ng-click="userLogout()" class="log-out">LOG OUT</div>
-    </div>
-
-    <h1 class="beYou"> Be . <span id="besuper"></span></h1>
-</section>
-
-<section class="main-container-header">
-    <div class="about-header">
-        <div class="hyphen-container"></div>
-
-        By the Power of<font> GreySkull</font>
-    </div>
-
-</section>
-<section class="side-bar">
-    <div onclick="menuDrop('myDropdown', 30); sideDrop('2ndDropdown', 100)" class="search-filter">
-        FILTER BY <span id="navarrow">&#9662</span>
 
 
-    </div>
-    <div id="myDropdown" class="filter-dropdown">
-        <div id="2ndDropdown" class="dropdown-content">
-            <div id="gender-div" onclick="genderColor" class="gender-selector"><span ng-click="genderFilter = {gender: 'm'}">GENDER:</span> <span class="color1" onclick="genderColor(this)" ng-click="genderFilter = {gender: 'men'}">MEN</span> - <span onclick="genderColor(this)" class="color1" ng-click="genderFilter = {gender: 'female'}">WOMEN</span></div>
-            <div class="color-selector">
-                <div ng-click="colorFilter = {color: 'all'}" class="filter-title">COLORS:</div>
-                <div id="feature-content">
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'blue'}" onclick="toggleOpacity(this)" id="cc-blue"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'black'}" onclick="toggleOpacity(this)" id="cc-black"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'red'}" onclick="toggleOpacity(this)" id="cc-red"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'orange'}" onclick="toggleOpacity(this)" id="cc-orange"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'green'}" onclick="toggleOpacity(this)" id="cc-green"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'yellow'}" onclick="toggleOpacity(this)" id="cc-yellow"></div>
-                    <div class="cc-opacity-half" ng-click="colorFilter = {color: 'gray'}" onclick="toggleOpacity(this)" id="cc-gray"></div>
+        </nav>
 
+        <div id="cart-menu"  class="cart-dropdown">
+            <div onclick="menuDrop('cart-menu', 55)" class="closecart"> X </div>
+            <div  class="cart-contents">
+              <div class="cart-item-container" ng-repeat="item in cartItems">
+                <div class="cart-item-image"><img ng-src="{{item.item.image}}" alt="" /></div>
+                <div class="cart-item-desc">{{item.item.name}}
+                  <p>${{item.item.price}}</p>
                 </div>
+              </div>
             </div>
-            <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
-            <div class="genre-selector">
-                <div class="filter-title">GENRE:</div>
-                <div id="genre-content">
-                    <div id="genre-comics" class="genre-container"></div>
-                    <div class="genre-container"></div>
-                    <div class="genre-container"></div>
-                    <div class="genre-container"></div>
-                </div>
-            </div>
+            <div ng-controller="homeCtrl" ng-show="loggedUser" ng-click="userLogout()" class="log-out">LOG OUT</div>
         </div>
-    </div>
-    <div id="feature-products">
-        <h1 class="feature-title">FEATURES</h1>
-        <div class="color2" onclick="toggleColor(this)" ng-click="myFilter = name">All prodcuts</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'shirt'}">Shirts</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'bag'}">Bags</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'hat'}">Caps & hats</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'gym'}">Gymwear</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'sweater'}">Sweatshirts</div>
-        <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'other'}">Accessories</div>
-    </div>
-    <div class="recent-products">
-        RECENT PRODUCTS
-    </div>
-</section>
 
-<section class="search-bar">
-    <div class="product-search">Search Products:
-        <input ng-model="name">
-    </div>
-    <div>
-        SORT BY:
-        <select ng-model="searchProperty" class="sort-by">
-            <option value="name">Name</option>
-            <option value="price">Price $ to $$$</option>
-            <option value="-price">Price $$$ to $</option>
-            <option value="-likes">Popular</option>
-        </select>
-    </div>
-    <div class="products-found">Products Found: <span> {{store.length}} </span> </div>
-</section>
-<section class="main-container">
+        <h1 class="beYou"> Be . <span id="besuper"></span></h1>
+    </section>
 
+    <section class="main-container-header">
+        <div class="about-header">
+            <div class="hyphen-container"></div>
 
-    <section class="product-container" ng-repeat="product in store | filter:name | filter:genderFilter | filter:colorFilter | filter:myFilter | orderBy: searchProperty track by product._id">
-        <div class="shirts">
-            <div class="shirt-resize">
-                <img ng-src="{{product.image}}" alt="tshirt image">
-
-            </div>
-            <div id="like-animation" class="like-me">
-                <img src=".././images/heart.png" alt="" />
-                <div on-click="likeCounter()" id="likes">
-                    {{product.likes + 2}}
-                </div>
-
-                <button type="button" ng-click="grabId(product._id)" id="cart-button" name="button">Add to Cart</button>
-                <!-- </div> -->
-            </div>
-        </div>
-        <div class="product-info">
-            {{product.name}}
-            <br> ${{ product.price }}
-            <br>
-            <!-- <button type="button" id="cart-button" name="button">Add to Cart</button> -->
+            By the Power of<font> GreySkull</font>
         </div>
 
     </section>
+    <section class="side-bar">
+        <div onclick="menuDrop('myDropdown', 30); sideDrop('2ndDropdown', 100)" class="search-filter">
+            FILTER BY <span id="navarrow">&#9662</span>
 
+
+        </div>
+        <div id="myDropdown" class="filter-dropdown">
+            <div id="2ndDropdown" class="dropdown-content">
+                <div id="gender-div" onclick="genderColor" class="gender-selector"><span ng-click="genderFilter = {gender: 'm'}">GENDER:</span> <span class="color1" onclick="genderColor(this)" ng-click="genderFilter = {gender: 'men'}">MEN</span> - <span onclick="genderColor(this)" class="color1" ng-click="genderFilter = {gender: 'female'}">WOMEN</span></div>
+                <div class="color-selector">
+                    <div ng-click="colorFilter = {color: 'all'}" class="filter-title">COLORS:</div>
+                    <div id="feature-content">
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'blue'}" onclick="toggleOpacity(this)" id="cc-blue"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'black'}" onclick="toggleOpacity(this)" id="cc-black"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'red'}" onclick="toggleOpacity(this)" id="cc-red"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'orange'}" onclick="toggleOpacity(this)" id="cc-orange"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'green'}" onclick="toggleOpacity(this)" id="cc-green"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'yellow'}" onclick="toggleOpacity(this)" id="cc-yellow"></div>
+                        <div class="cc-opacity-half" ng-click="colorFilter = {color: 'gray'}" onclick="toggleOpacity(this)" id="cc-gray"></div>
+
+                    </div>
+                </div>
+                <div class="size-selector">SIZE: S - M - L - XL - XXL</div>
+                <div class="genre-selector">
+                    <div class="filter-title">GENRE:</div>
+                    <div id="genre-content">
+                        <div id="genre-comics" class="genre-container"></div>
+                        <div class="genre-container"></div>
+                        <div class="genre-container"></div>
+                        <div class="genre-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="feature-products">
+            <h1 class="feature-title">FEATURES</h1>
+            <div class="color2" onclick="toggleColor(this)" ng-click="myFilter = name">All prodcuts</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'shirt'}">Shirts</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'bag'}">Bags</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'hat'}">Caps & hats</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'gym'}">Gymwear</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'sweater'}">Sweatshirts</div>
+            <div class="color1" onclick="toggleColor(this)" ng-click="myFilter = {type: 'other'}">Accessories</div>
+        </div>
+        <div class="recent-products">
+            RECENT PRODUCTS
+        </div>
+    </section>
+
+    <section class="search-bar">
+        <div class="product-search">Search Products:
+            <input ng-model="name">
+        </div>
+        <div>
+            SORT BY:
+            <select ng-model="searchProperty" class="sort-by">
+                <option value="name">Name</option>
+                <option value="price">Price $ to $$$</option>
+                <option value="-price">Price $$$ to $</option>
+                <option value="-likes">Popular</option>
+            </select>
+        </div>
+        <div  class="products-found">Products Found: <span> {{store.length}} </span> </div>
+    </section>
+    <section class="main-container">
+
+
+        <section class="product-container" ng-repeat="product in store | filter: query | filter:name | filter:genderFilter | filter:colorFilter | filter:myFilter | orderBy: searchProperty track by product._id">
+            <div class="shirts">
+                <div ui-sref="productview" ng-click="productView(product)" class="shirt-resize">
+                    <img ng-src="{{product.image}}" alt="tshirt image">
+
+                </div>
+                <div id="like-animation" class="like-me">
+                    <!-- <img src=".././images/heart.png" alt="" />
+                    <div on-click="likeCounter()" id="likes">
+                        {{product.likes + 2}}
+                    </div> -->
+
+                    <button type="button" ng-click="addToCart(product._id)" id="cart-button" name="button">Add to Cart</button>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="product-info">
+                {{product.name}}
+                <br> ${{ product.price }}
+                <br>
+                <!-- <button type="button" id="cart-button" name="button">Add to Cart</button> -->
+            </div>
+
+        </section>
+
+    </section>
 </section>

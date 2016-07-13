@@ -1,67 +1,81 @@
 angular.module('myApp')
     .controller('mainCtrl', function($scope, $state, $rootScope, mainService) {
 
+
+//STATE CHANGES
+      $rootScope.$on('$stateChangeSuccess', function() {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      });
         var checkUser = function() {
-          mainService.getCurrentUser().then(function(response){
-            $scope.loggedUser = response;
-          });
-        };
-
-        checkUser();
-
-        $rootScope.$on('$stateChangeSuccess', checkUser);
-
-        mainService.getProducts().then(function(response) {
-
-            $scope.store = response;
-        });
-
-        $scope.searchProperty = 'searchProperty';
-
-        $scope.userInfo = {};
-
-        $scope.userLogin = function(user){
-          mainService.login(user).then(function(response){
-            if (!response) {
-                alert('User does not exist');
-                $scope.user.password = '';
-          } else {
-                $state.go('home');
-          }
-          }).catch(function(err) {
-              alert('Unable to login');
+            mainService.getCurrentUser().then(function(response) {
+                $scope.loggedUser = response;
             });
         };
+        checkUser();
+        $rootScope.$on('$stateChangeSuccess', checkUser);
 
+      $scope.store =  mainService.getProducts().then(function(response) {
+            $scope.store = response;
+            // console.log(response);
+        });
+//JAVASCRIPT ANIMATIONS
+        var moveRight =  function() {
+           var modal = document.getElementById('modal-drop-two');
+           var maxL = 0+"%";
+           if(modal.style.left === maxL){
+             modal.style.left = -100+"%";
+           } else{
+             modal.style.left = maxL;
+           }
+         };
 
-        $scope.registerUser = function(user) {
-            $scope.userInfo = angular.copy(user);
-            mainService.createUser(user).then(function(response) {
-                if (!response.data) {
-                  alert('Unable to create user');
-              } else {
-                  alert('User Created');
-                  $scope.userLogin = {};
-                }
-            }).catch(function(err) {
-                  alert('Unable to create user');
+        var fireText = function() {
+            mainService.activeText();
+        }
+        fireText();
+        $rootScope.$on('$stateChangeSuccess', fireText);
+
+        $scope.searchProperty = 'searchProperty';
+        $scope.userInfo = {};
+
+//LOGIN AUTH-----------------------------------------------
+
+//CART STUFF---------------------------------------------------------
+        $scope.populateCart = function(){
+          mainService.populateCart().then(function(response){
+            // console.log(response);
+            $scope.cartItems = response.products;
+            // console.log(response, "justresponse");
           });
+        };
 
-        };
-        $scope.userLogout = function(){
-          mainService.logout();
-        };
-          // mainService.getUser().then(function(response){
-          //   $scope.store = response;
-          // });
-        // $scope.sortBy = function(searchProperty) {
-        //   $scope.searchProperty = 'searchProperty';
-        // };
+        $scope.productView = function(product){
+            console.log(product);
+          $scope.productViewItem = product;
+
+        }
+    
+
+        $scope.addToCart = function(productId){
+          // console.log(productId);
+            mainService.getCurrentUserForCart(productId).then(function(response){
+                // console.log(response);
+              if (!response) {
+                alert('No response');
+              } else {
+                  alert('Added to Cart');
+                  $scope.userLogin = {};
+              }
+          }).catch(function(err) {
+              moveRight();
+              $state.go('home');
+              alert('Do us a solid and login');
+          });
+      };
         $scope.grabId = function(productId) {
             mainService.addToCart(productId).then(function(response) {
                 $scope.cart = response.data;
             });
-            console.log(productId);
+            // console.log(productId);
         };
-
     });

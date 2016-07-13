@@ -1,0 +1,44 @@
+<nav style="border-bottom: 2px solid #F1F1F1;" class="navbar">
+
+    <div ui-sref="home" id="productNav" class="navlogo">Nerdy
+        <spam>By</spam>
+        <br>Nature
+    </div>
+
+
+    <div id="productNav" onclick="menuDrop('modal-drop-contact', 100)"   class="menu-item">Contact Us</div>
+    <!-- <div id="productLogin" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div> -->
+    <div id="productLogin" ng-show="!loggedUser" onclick="sideDrop('modal-drop', 100)" class="menu-item">Register</div>
+    <div id="productLogin" ng-show="loggedUser" onclick="menuDrop('cart-menu', 45)" class="menu-item">Hey! {{loggedUser.name}}</div>
+</nav>
+
+<section class="product-display">
+  <div class="product-image">
+    <div class="selector-bar"></div>
+    <div  class="image-actual">
+        <img ng-src="{{productViewItem.image}}" alt="tshirt image">
+    </div>
+  </div>
+  <div class="productview-info">
+    <div class="product-text-container">
+      <div  class="product-text"><h1 ui-sref="products">Back to Products &#8594;</h1> <br>
+        {{productViewItem.name}} <br>
+        <p>${{productViewItem.price}}</p>  <br>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam,nim id est laborum.</span>
+      </div>
+      <div class="product-add">
+        <div ng-click="addToCart(productViewItem._id)" class="add-to-Cart">+ Add To Cart</div>
+      </div>
+    </div>
+    <!-- <div class=""></div> -->
+  </div>
+  <div class="cart-display">
+    <div ng-repeat="item in cartItems" class="cart-preview-item">
+      <!-- menu dsdd
+      <img src="{{item.item.image}}" alt="" /> -->
+    </div>
+  </div>
+
+</section>

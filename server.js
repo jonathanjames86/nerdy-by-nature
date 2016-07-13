@@ -5,14 +5,13 @@ var cors = require('cors');
 var session = require('express-session');
 var productController = require('./productController.js');
 var User = require('./server/user.js');
+var Cart = require('./server/cart.js');
 var userController = require('./server/userController.js');
 var passport = require('./server/passport');
 var config = require('./config');
 
-
-
-
 var port = 3000;
+
 mongoose.connect('mongodb://localhost/nerdy', function(err) {
     if (err) console.log(err);
 });
@@ -35,33 +34,31 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+//Passport Endpoints// Passport Endpoints
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/me'
+}));
+app.get('/logout', function(req, res, next) {
+  req.logout();
+  return res.status(200).send('logged out');
+});
 
-//
-//
-// passport.use('local', new LocalStrategy(
-//     function(email, password, done) {
-//         console.log('two');
-//         User.findOne({
-//             email: email
-//         }, function(err, user) {
-//             console.log('three');
-//             if (err) {
-//                 return done(err);
-//             }
-//             if (!user) {
-//                 return done(null, false, {
-//                     message: 'Incorrect username.'
-//                 });
-//             }
-//             if (user.password !== password) {
-//                 return done(null, false, {
-//                     message: 'Incorrect password.'
-//                 });
-//             }
-//             return done(null, user);
-//         });
-//     }));
+// Products Endpoints
 
+app.get('/nerdy/products', productController.read);
+
+app.post('/api/newUser', userController.register, passport.authenticate('local', {
+  successRedirect: '/me'
+}));
+
+
+app.get('/me', isAuthed, userController.me);
+app.put('/user/cart/', userController.updateCart);
+app.get('/cart/getproducts', userController.readCart);
+
+app.listen(port, function() {
+    console.log("Started on nerdy port", port);
+});
 // passport.use('signup', new LocalStrategy({
 //         usernameField: 'email',
 //         passwordField: 'password',
@@ -95,26 +92,33 @@ app.use(passport.session());
 //         });
 //
 //     }));
-
+//
+//
+// passport.use('local', new LocalStrategy(
+//     function(email, password, done) {
+//         console.log('two');
+//         User.findOne({
+//             email: email
+//         }, function(err, user) {
+//             console.log('three');
+//             if (err) {
+//                 return done(err);
+//             }
+//             if (!user) {
+//                 return done(null, false, {
+//                     message: 'Incorrect username.'
+//                 });
+//             }
+//             if (user.password !== password) {
+//                 return done(null, false, {
+//                     message: 'Incorrect password.'
+//                 });
+//             }
+//             return done(null, user);
+//         });
+//     }));
 // }
-
-//Passport Endpoints// Passport Endpoints
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/me'
-}));
-app.get('/logout', function(req, res, next) {
-  req.logout();
-  return res.status(200).send('logged out');
-});
-
-
-
-
-// Products Endpoints
-
-
-// app.post('/nerdy/products', productController.create);
-app.get('/nerdy/products', productController.read);
+app.post('/nerdy/products', productController.create);
 // app.get('/nerdy/products/:id', productController.show);
 // app.put('/nerdy/products:id', productController.update);
 // app.delete('/nerdy/products/:id', productController.destroy);
@@ -131,13 +135,6 @@ app.get('/nerdy/products', productController.read);
 //     req.logout();
 //     return res.status(200).send('logged out');
 // });
-app.post('/api/user/addUser', userController.register);
-app.get('/api/user/login', userController.read);
-
-app.get('/me', isAuthed, userController.me);
-
-
-
 //
 //
 // app.put('/api/addToCart/:id', function(req, res, next) {
@@ -160,11 +157,3 @@ app.get('/me', isAuthed, userController.me);
 //     });
 //
 // });
-
-
-
-
-
-app.listen(port, function() {
-    console.log("Started on nerdy port", port);
-});

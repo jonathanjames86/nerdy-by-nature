@@ -21,5 +21,8 @@ angular.module('myApp', ['ui.router'])
       //       });
       //   }
       // }
-      });
+    }).state('productview', {
+      url: '/productView',
+      templateUrl: '/productView/productview.html'
+    });
 });

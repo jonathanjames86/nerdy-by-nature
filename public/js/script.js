@@ -25,9 +25,6 @@ function wssSlide() {
     setTimeout('beSuperNext()', 165);
 }
 
-function moveLeft(){
-
-}
 
 function moveRight(x) {
   var modal = document.getElementById(x);
