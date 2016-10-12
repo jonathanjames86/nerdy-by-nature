@@ -12,7 +12,7 @@ var config = require('./config');
 
 var port = 3000;
 
-mongoose.connect('mongodb://localhost/nerdy', function(err) {
+mongoose.connect('mongodb://127.0.0.1/nerdy', function(err) {
     if (err) console.log(err);
 });
 
