@@ -14,7 +14,7 @@ module.exports = {
             Cart.create({owner: newUser._id}, function(e, r) {
               if (e) return res.status(500).send(e);
             })
-            next();
+            .next();
         });
     },
 
